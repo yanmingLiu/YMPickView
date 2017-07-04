@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C227D2601F023E4000A6EA10 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C227D25F1F023E4000A6EA10 /* Info.plist */; };
 		E4304B8E1E275F6D00095F71 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4304B8D1E275F6D00095F71 /* main.m */; };
 		E4304B911E275F6D00095F71 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4304B901E275F6D00095F71 /* AppDelegate.m */; };
 		E4304B941E275F6D00095F71 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4304B931E275F6D00095F71 /* ViewController.m */; };
@@ -17,7 +18,6 @@
 		E4304BB21E275F6D00095F71 /* PickViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4304BB11E275F6D00095F71 /* PickViewUITests.m */; };
 		E4304BC21E275F7500095F71 /* YMPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4304BC11E275F7500095F71 /* YMPickView.m */; };
 		E4304BC81E275F7D00095F71 /* pickerControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E4304BC61E275F7D00095F71 /* pickerControl.m */; };
-		E4304BC91E275F7D00095F71 /* pickerControl.zip in Resources */ = {isa = PBXBuildFile; fileRef = E4304BC71E275F7D00095F71 /* pickerControl.zip */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C227D25F1F023E4000A6EA10 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4304B891E275F6D00095F71 /* PickView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4304B8D1E275F6D00095F71 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E4304B8F1E275F6D00095F71 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -58,7 +59,6 @@
 		E4304BC11E275F7500095F71 /* YMPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMPickView.m; sourceTree = "<group>"; };
 		E4304BC51E275F7D00095F71 /* pickerControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pickerControl.h; sourceTree = "<group>"; };
 		E4304BC61E275F7D00095F71 /* pickerControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pickerControl.m; sourceTree = "<group>"; };
-		E4304BC71E275F7D00095F71 /* pickerControl.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = pickerControl.zip; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +118,7 @@
 				E4304B951E275F6D00095F71 /* Main.storyboard */,
 				E4304B981E275F6D00095F71 /* Assets.xcassets */,
 				E4304B9A1E275F6D00095F71 /* LaunchScreen.storyboard */,
+				C227D25F1F023E4000A6EA10 /* Info.plist */,
 				E4304B9D1E275F6D00095F71 /* Info.plist */,
 				E4304B8C1E275F6D00095F71 /* Supporting Files */,
 			);
@@ -163,7 +164,6 @@
 			isa = PBXGroup;
 			children = (
 				E4304BC41E275F7D00095F71 /* pickerControl */,
-				E4304BC71E275F7D00095F71 /* pickerControl.zip */,
 			);
 			path = pickerControl;
 			sourceTree = "<group>";
@@ -287,8 +287,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4304B9C1E275F6D00095F71 /* LaunchScreen.storyboard in Resources */,
-				E4304BC91E275F7D00095F71 /* pickerControl.zip in Resources */,
 				E4304B991E275F6D00095F71 /* Assets.xcassets in Resources */,
+				C227D2601F023E4000A6EA10 /* Info.plist in Resources */,
 				E4304B971E275F6D00095F71 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,6 +556,7 @@
 				E4304BB81E275F6D00095F71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E4304BB91E275F6D00095F71 /* Build configuration list for PBXNativeTarget "PickViewTests" */ = {
 			isa = XCConfigurationList;
@@ -564,6 +565,7 @@
 				E4304BBB1E275F6D00095F71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E4304BBC1E275F6D00095F71 /* Build configuration list for PBXNativeTarget "PickViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -572,6 +574,7 @@
 				E4304BBE1E275F6D00095F71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

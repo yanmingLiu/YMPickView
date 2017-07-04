@@ -16,9 +16,6 @@
  *  @param type    1：选择 时间； 0：选择自己的
  *  @param col     1：默认3列    0：1列
  *  @param sources nil:默认是时间  汉字传自己的数据
- *  @param block
- *
- *  @return
  */
 
 - (instancetype)initWithType:(NSInteger)type columuns:(NSInteger)col WithDataSource:(NSArray *)sources response:(void(^)(NSString*))block;

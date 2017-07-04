@@ -7,7 +7,13 @@
 //
 
 #import "pickerControl.h"
-#import "AppDelegate.h"
+
+
+#define kScreenFrame                    ([UIScreen mainScreen].bounds)
+#define RGB(__r, __g, __b)  [UIColor colorWithRed:(1.0*(__r)/255)\
+green:(1.0*(__g)/255)\
+blue:(1.0*(__b)/255)\
+alpha:1.0]
 
 @interface pickerControl () <UIPickerViewDataSource,UIPickerViewDelegate>{
     NSArray *dataSource;
@@ -48,14 +54,23 @@
     [self addSubview:contentView];
     self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];//设置背景颜色为黑色，并有0.4的透明度
     //添加白色view
-    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 40)];
+    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 50)];
     whiteView.backgroundColor = [UIColor whiteColor];
     [contentView addSubview:whiteView];
+    
+    // 圆角
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:whiteView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(10, 10)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = whiteView.bounds;
+    maskLayer.path = maskPath.CGPath;
+    whiteView.layer.mask = maskLayer;
+    whiteView.clipsToBounds = YES;
+    
     //添加确定和取消按钮
     for (int i = 0; i < 2; i ++) {
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake((self.frame.size.width - 60) * i, 0, 60, 40)];
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake((self.frame.size.width - 60) * i, 0, 60, 50)];
         [button setTitle:i == 0 ? @"取消" : @"确定" forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [button setTitleColor:i == 0 ? RGB(102, 102, 102) : RGB(255, 51, 102) forState:UIControlStateNormal];
         [whiteView addSubview:button];
         [button addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
         button.tag = 10 + i;
@@ -71,7 +86,7 @@
 }
 #pragma mark dataPicker
 - (void)dataPicker{
-    UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 40, CGRectGetWidth(self.bounds), 260)];
+    UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 50, CGRectGetWidth(self.bounds), 300-50)];
     datePicker.datePickerMode = UIDatePickerModeDate;
     datePicker.backgroundColor = [UIColor colorWithRed:240.0/255 green:243.0/255 blue:250.0/255 alpha:1];
     [datePicker addTarget:self action:@selector(dateChange:) forControlEvents:UIControlEventValueChanged];
@@ -107,8 +122,8 @@
 }
 #pragma mark 出现
 - (void)show {
-    AppDelegate *app = [UIApplication sharedApplication].delegate;
-    [app.window addSubview:self];
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [window addSubview:self];
     [UIView animateWithDuration:0.4 animations:^{
         contentView.center = CGPointMake(self.frame.size.width/2, contentView.center.y - contentView.frame.size.height);
     }];

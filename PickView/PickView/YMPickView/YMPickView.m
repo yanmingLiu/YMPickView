@@ -150,20 +150,30 @@ BOOL isArray(id obj) {
     [self addSubview:_contentView];
     self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];//设置背景颜色为黑色，并有0.4的透明度
     //添加白色view
-    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 40)];
+    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 50)];
     whiteView.backgroundColor = [UIColor whiteColor];
     [_contentView addSubview:whiteView];
+    
+    // 圆角
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:whiteView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(10, 10)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = whiteView.bounds;
+    maskLayer.path = maskPath.CGPath;
+    whiteView.layer.mask = maskLayer;
+    whiteView.clipsToBounds = YES;
+    
     //添加确定和取消按钮
     for (int i = 0; i < 2; i ++) {
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake((self.frame.size.width - 60) * i, 0, 60, 40)];
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake((self.frame.size.width - 60) * i, 0, 60, 50)];
         [button setTitle:i == 0 ? @"取消" : @"确定" forState:UIControlStateNormal];
         [button setTitleColor:i == 0 ? RGB(102, 102, 102) : RGB(255, 51, 102) forState:UIControlStateNormal];
         [whiteView addSubview:button];
         [button addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
         button.tag = 10 + i;
+        button.titleLabel.font = [UIFont systemFontOfSize:15];
     }
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(70, 0, self.frame.size.width - 140, 40)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(70, 0, self.frame.size.width - 140, 50)];
     label.font = [UIFont systemFontOfSize:16.0];
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = RGB(102, 102, 102);
@@ -212,7 +222,7 @@ BOOL isArray(id obj) {
 #pragma mark pickerView
 - (void)makePickerView {
     
-    UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 40, CGRectGetWidth(self.bounds), 260)];
+    UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 50, CGRectGetWidth(self.bounds), 250)];
     pickerView.delegate = self;
     pickerView.dataSource = self;
     pickerView.backgroundColor = [UIColor colorWithRed:240.0/255 green:243.0/255 blue:250.0/255 alpha:1];
